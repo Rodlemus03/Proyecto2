@@ -155,11 +155,11 @@ fn main() {
     let textura = manejador_textura.get_textura("papel");
     let papel = Material::new(Color::new(255, 255, 255), 1.0, [0.0, 0.0], textura);
 
-    let imagen: image::ImageBuffer<image::Rgba<u8>, Vec<u8>> = image::open("madera.png").unwrap().into_rgba8();
+    let imagen: image::ImageBuffer<image::Rgba<u8>, Vec<u8>> =
+        image::open("madera.png").unwrap().into_rgba8();
     manejador_textura.cargar_textura("madera", imagen);
     let textura = manejador_textura.get_textura("madera");
     let madera = Material::new(Color::new(255, 255, 255), 1.0, [0.0, 0.0], textura);
-
 
     let imagen: image::ImageBuffer<image::Rgba<u8>, Vec<u8>> =
         image::open("agua.png").unwrap().into_rgba8();
@@ -271,7 +271,6 @@ fn main() {
             velocidad: vec3(0.0, 0.0, 0.0),
         }));
 
-
         //Rellenamos
         let mut contadorX = -2.0;
         let mut contador2X = -1.5;
@@ -283,7 +282,7 @@ fn main() {
                 velocidad: vec3(0.0, 0.0, 0.0),
             }));
             contadorX += 1.0;
-            if contadorX<2.5{
+            if contadorX < 2.5 {
                 objetos.push(Box::new(Cube {
                     center: Vec3::new(contador2X, 0.0, 1.0),
                     size: 0.5,
@@ -292,11 +291,10 @@ fn main() {
                 }));
             }
 
-            contador2X+=1.0;
-            
+            contador2X += 1.0;
         }
         contadorX = -1.5;
-        contador2X=-1.0;
+        contador2X = -1.0;
         while contadorX < 2.5 {
             objetos.push(Box::new(Cube {
                 center: Vec3::new(contadorX, 0.5, 1.0),
@@ -305,7 +303,7 @@ fn main() {
                 velocidad: vec3(0.0, 0.0, 0.0),
             }));
             contadorX += 1.0;
-            if contadorX<2.5{
+            if contadorX < 2.5 {
                 objetos.push(Box::new(Cube {
                     center: Vec3::new(contador2X, 0.5, 1.0),
                     size: 0.5,
@@ -314,10 +312,10 @@ fn main() {
                 }));
             }
 
-            contador2X+=1.0;
+            contador2X += 1.0;
         }
         contadorX = -1.0;
-        contador2X=-0.5;
+        contador2X = -0.5;
         while contadorX < 1.5 {
             objetos.push(Box::new(Cube {
                 center: Vec3::new(contadorX, 1.0, 1.0),
@@ -326,7 +324,7 @@ fn main() {
                 velocidad: vec3(0.0, 0.0, 0.0),
             }));
             contadorX += 1.0;
-            if contadorX<1.5{
+            if contadorX < 1.5 {
                 objetos.push(Box::new(Cube {
                     center: Vec3::new(contador2X, 1.0, 1.0),
                     size: 0.5,
@@ -335,10 +333,10 @@ fn main() {
                 }));
             }
 
-            contador2X+=1.0;
+            contador2X += 1.0;
         }
         contadorX = -0.5;
-        contador2X=0.0;
+        contador2X = 0.0;
         while contadorX < 1.5 {
             objetos.push(Box::new(Cube {
                 center: Vec3::new(contadorX, 1.5, 1.0),
@@ -364,35 +362,33 @@ fn main() {
             }));
             contadorX += 1.0;
         }
-        let mut contador1x=-2.0;
-        let mut contador1y=0.5;
+        let mut contador1x = -2.0;
+        let mut contador1y = 0.5;
 
-        while contador1x<0.5 {
+        while contador1x < 0.5 {
             objetos.push(Box::new(Cube {
                 center: Vec3::new(contador1x, contador1y, 1.0),
                 size: 0.5,
                 material: madera.clone(),
                 velocidad: vec3(0.0, 0.0, 0.0),
             }));
-            contador1x+=0.5;
-            contador1y+=0.5;
+            contador1x += 0.5;
+            contador1y += 0.5;
         }
-        let mut contador1x=-1.5;
-        let mut contador1y=5.0;
 
-        while contador1x<3.0 {
+        let mut contador1x = 0.5;
+        let mut contador1y = 2.0;
+        while contador1x < 2.5 {
             objetos.push(Box::new(Cube {
                 center: Vec3::new(contador1x, contador1y, 1.0),
                 size: 0.5,
                 material: madera.clone(),
-                velocidad: vec3(0.0, 0.0, 0.0),
+                velocidad: vec3(2.0, 0.0, 0.0),
             }));
-            contador1x+=0.5;
-            contador1y+=0.5;
+
+            contador1x += 0.5;
+            contador1y -= 0.5;
         }
-
-
-
 
         let mut cubo_agua = Cube::new(
             vec3(0.0, 5.0, 0.0), // Posición inicial
