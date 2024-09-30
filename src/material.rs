@@ -1,5 +1,5 @@
 use crate::color::Color;
-use image::{RgbaImage};
+use image::RgbaImage;
 use std::sync::Arc;
 
 #[derive(Debug, Clone)]

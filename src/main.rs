@@ -76,13 +76,7 @@ pub fn cast_ray(
     diffuse + specular
 }
 
-fn transicion_color(start: &Color, end: &Color, t: f32) -> Color {
-    let r = (start.r() as f32 * (1.0 - t) + end.r() as f32 * t) as u8;
-    let g = (start.g() as f32 * (1.0 - t) + end.g() as f32 * t) as u8;
-    let b = (start.b() as f32 * (1.0 - t) + end.b() as f32 * t) as u8;
 
-    Color::new(r, g, b)
-}
 
 pub fn render(
     framebuffer: &mut Framebuffer,
@@ -252,7 +246,7 @@ fn main() {
             light.color = color_blanco.clone();
             color_actual = Color::new(4, 12, 36);
         }
-        // Calcular la posición de la luz (animación)
+
         let tiempo_actual_luz = tiempo_luz.elapsed().as_secs_f32();
         angulo = (tiempo_actual_luz * velocidad_angular) % (2.0 * PI);
 
@@ -391,12 +385,12 @@ fn main() {
         }
 
         let mut cubo_agua = Cube::new(
-            vec3(0.0, 5.0, 0.0), // Posición inicial
+            vec3(-2.0, -1.0, 0.0), // Posición inicial
             1.0,                 // Tamaño
             agua.clone(),
             vec3(0.0, 0.0, 0.0), // Velocidad inicial (quieto)
         );
-        let delta_tiempo = 0.016; // Por ejemplo, 16 ms por fotograma (aprox 60 FPS)
+        let delta_tiempo = 0.016; 
         cubo_agua.actualizar_posicion(delta_tiempo);
 
         // Añadir el cubo de agua a la lista de objetos para que se renderice
